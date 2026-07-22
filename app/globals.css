@@ -1,26 +1,87 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #ffffff; /* Premium Clean White */
+  --foreground: #0f172a; /* Slate 900 for high-contrast typography */
+  --card-bg: #ffffff;
+  --card-border: rgba(15, 23, 42, 0.06);
 }
 
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+
+  /* Premium Enterprise Colors */
+  --color-brand-primary: #0f172a; /* Slate 900 */
+  --color-brand-secondary: #475569; /* Slate 600 */
+  --color-accent-blue: #2563eb; /* Cobalt Blue */
+  --color-accent-indigo: #4f46e5; /* Indigo */
+  --color-accent-teal: #0d9488; /* Teal */
+
+  /* Soft shadows */
+  --shadow-soft-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+  --shadow-soft-md: 0 10px 30px rgba(15, 23, 42, 0.06);
+  --shadow-soft-lg: 0 20px 50px rgba(15, 23, 42, 0.08);
+
+  /* Illustration Animations */
+  --animate-float: float 8s ease-in-out infinite;
+  --animate-float-slow: float 12s ease-in-out infinite;
+  --animate-pulse-soft: pulse-soft 4s ease-in-out infinite;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
   }
 }
 
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.95;
+    filter: drop-shadow(0 0 12px rgba(37, 99, 235, 0.15));
+  }
+}
+
+/* Premium Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+  border: 2px solid #f8fafc;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Base Body Styling */
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Technical grid backdrop in light mode */
+.enterprise-grid {
+  background-size: 50px 50px;
+  background-image: 
+    linear-gradient(to right, rgba(15, 23, 42, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.02) 1px, transparent 1px);
 }
